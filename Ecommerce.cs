@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 using Project1;
+using Project;
 
 namespace ProjectCS
 {
@@ -17,6 +18,8 @@ namespace ProjectCS
         private Products productsWindow;
         private Customers customersWindow;
         private Shippers shippersWindow;
+        private Categories catWindow;
+        private Supplier suppliersWindow; 
         private SqlConnection conn;
 
         public Ecommerce()
@@ -32,6 +35,10 @@ namespace ProjectCS
             customersWindow.MdiParent = this;
             shippersWindow = new Shippers(conn, wdShippers);
             shippersWindow.MdiParent = this;
+            catWindow = new Categories(conn, wdCategories);
+            catWindow.MdiParent = this;
+            suppliersWindow = new Supplier(conn, wdSuppliers);
+            suppliersWindow.MdiParent = this;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)

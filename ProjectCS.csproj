@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Shippers.resx">
       <DependentUpon>Shippers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,6 +116,12 @@
     </Compile>
     <Compile Include="Shippers.designer.cs">
       <DependentUpon>Shippers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
