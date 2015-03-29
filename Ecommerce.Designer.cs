@@ -45,6 +45,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.wdEmployees = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +70,8 @@
             this.wdProducts,
             this.wdCategories,
             this.wdSuppliers,
-            this.wdShippers});
+            this.wdShippers,
+            this.wdEmployees});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(62, 20);
             this.viewMenu.Text = "&Manage";
@@ -171,6 +173,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // wdEmployees
+            // 
+            this.wdEmployees.CheckOnClick = true;
+            this.wdEmployees.Name = "wdEmployees";
+            this.wdEmployees.Size = new System.Drawing.Size(152, 22);
+            this.wdEmployees.Text = "Employees";
+            // 
             // Ecommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,6 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem wdCategories;
         private System.Windows.Forms.ToolStripMenuItem wdSuppliers;
         private System.Windows.Forms.ToolStripMenuItem wdShippers;
+        private System.Windows.Forms.ToolStripMenuItem wdEmployees;
     }
 }
 

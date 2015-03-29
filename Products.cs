@@ -19,8 +19,6 @@ namespace ProjectCS
             InitializeComponent();
             this.cbCat.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
-            dataView.AutoResizeColumns(
-            DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
         }
 
         private void Products_Load(object sender, EventArgs e)
@@ -171,14 +169,20 @@ namespace ProjectCS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow r in this.dataView.SelectedRows) {
-                SqlCommand cmd = new SqlCommand("deleteProduct", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@id", r.Cells[0].Value));
-                cmd.ExecuteNonQuery();
+            DialogResult dr = MessageBox.Show("Are you sure to delete?",
+                "Confirm delete", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow r in this.dataView.SelectedRows)
+                {
+                    SqlCommand cmd = new SqlCommand("deleteProduct", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id", r.Cells[0].Value));
+                    cmd.ExecuteNonQuery();
 
-                this.dataView.Rows.RemoveAt(r.Index);
-                this.dataView.Update();
+                    this.dataView.Rows.RemoveAt(r.Index);
+                    this.dataView.Update();
+                }
             }
         }
 

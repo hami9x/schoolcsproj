@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Project1;
 using Project;
+using GroupProject_Employees;
 
 namespace ProjectCS
 {
@@ -19,7 +20,8 @@ namespace ProjectCS
         private Customers customersWindow;
         private Shippers shippersWindow;
         private Categories catWindow;
-        private Supplier suppliersWindow; 
+        private Supplier suppliersWindow;
+        private Employees empWindow;
         private SqlConnection conn;
 
         public Ecommerce()
@@ -39,6 +41,8 @@ namespace ProjectCS
             catWindow.MdiParent = this;
             suppliersWindow = new Supplier(conn, wdSuppliers);
             suppliersWindow.MdiParent = this;
+            empWindow = new Employees(conn, wdEmployees);
+            empWindow.MdiParent = this;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
