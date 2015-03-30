@@ -56,13 +56,6 @@
             this.txtPostal = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbmgrID = new System.Windows.Forms.ComboBox();
-            this.lblID = new System.Windows.Forms.Label();
             this.clempID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +70,13 @@
             this.clCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmgrID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbmgrID = new System.Windows.Forms.ComboBox();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -320,73 +320,12 @@
             this.clCountry,
             this.clPhone,
             this.clmgrID});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(421, 26);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(601, 485);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(31, 488);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 29;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(119, 488);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 30;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(212, 488);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 31;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(307, 488);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 32;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // cbmgrID
-            // 
-            this.cbmgrID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbmgrID.FormattingEnabled = true;
-            this.cbmgrID.Location = new System.Drawing.Point(141, 439);
-            this.cbmgrID.Name = "cbmgrID";
-            this.cbmgrID.Size = new System.Drawing.Size(121, 21);
-            this.cbmgrID.TabIndex = 34;
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblID.Location = new System.Drawing.Point(140, 26);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(0, 13);
-            this.lblID.TabIndex = 9;
             // 
             // clempID
             // 
@@ -471,6 +410,68 @@
             this.clmgrID.HeaderText = "Manager ID";
             this.clmgrID.Name = "clmgrID";
             this.clmgrID.Width = 81;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(31, 488);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 29;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(119, 488);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 30;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(212, 488);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(307, 488);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 32;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // cbmgrID
+            // 
+            this.cbmgrID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbmgrID.FormattingEnabled = true;
+            this.cbmgrID.Location = new System.Drawing.Point(141, 439);
+            this.cbmgrID.Name = "cbmgrID";
+            this.cbmgrID.Size = new System.Drawing.Size(121, 21);
+            this.cbmgrID.TabIndex = 34;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblID.Location = new System.Drawing.Point(140, 26);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(0, 13);
+            this.lblID.TabIndex = 9;
             // 
             // Employees
             // 

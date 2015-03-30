@@ -217,6 +217,7 @@
             this.dataView.AllowUserToDeleteRows = false;
             this.dataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataView.Location = new System.Drawing.Point(361, 95);
             this.dataView.Name = "dataView";
             this.dataView.Size = new System.Drawing.Size(567, 298);
