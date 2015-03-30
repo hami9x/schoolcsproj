@@ -413,17 +413,17 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(31, 488);
+            this.btnNew.Location = new System.Drawing.Point(309, 488);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 29;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Clear";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(119, 488);
+            this.btnAdd.Location = new System.Drawing.Point(30, 488);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 30;
@@ -433,7 +433,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(212, 488);
+            this.btnDelete.Location = new System.Drawing.Point(123, 488);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 31;
@@ -443,7 +443,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(307, 488);
+            this.btnUpdate.Location = new System.Drawing.Point(218, 488);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 32;

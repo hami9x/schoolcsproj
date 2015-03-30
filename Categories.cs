@@ -84,6 +84,8 @@ namespace Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (validateInput() == false) return;
+            else
             addCategories();
         }
 
@@ -111,6 +113,8 @@ namespace Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (validateInput() == false) return;
+            else
             updateCategories();
         }
 
@@ -176,10 +180,19 @@ namespace Project
         {
             if (dataGridView2.SelectedRows.Count > 0)
             {
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
                 DataGridViewRow r = dataGridView2.SelectedRows[0];
                 txtID.Text = r.Cells[0].Value.ToString();
                 txtCategoriesName.Text = r.Cells[1].Value.ToString();
                 txtDescription.Text = r.Cells[2].Value.ToString();
+            }
+            else
+            {
+                btnAdd.Enabled = true;
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
             }
         }
 
@@ -191,7 +204,30 @@ namespace Project
             
         }
 
-     
-        
+
+        bool validateInput() {
+
+            bool error = false;
+
+            if (txtCategoriesName.Text.Length > 15)
+            {
+                errorProvider1.SetError(txtCategoriesName, "Input out of range!");
+                error = true;
+            }
+            if (txtCategoriesName.Text.Length <=0 )
+            {
+                errorProvider1.SetError(txtCategoriesName, "Input out of range!");
+                error = true;
+            }
+
+            if (error == true)
+                return false;
+            else
+            {
+                errorProvider1.Clear();
+                return true;
+            }
+            
+        }
     }
 }

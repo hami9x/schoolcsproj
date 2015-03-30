@@ -144,6 +144,7 @@ namespace GroupProject_Employees
         {
             try
             {
+                this.dataGridView1.ClearSelection();
                 lblID.Text = "";
                 txtLastName.Text = "";
                 txtFirstName.Text = "";
@@ -166,6 +167,10 @@ namespace GroupProject_Employees
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            bool selEmpty = dataGridView1.SelectedRows.Count == 0;
+            this.btnDelete.Enabled = !selEmpty;
+            this.btnUpdate.Enabled = !selEmpty;
+            this.btnAdd.Enabled = selEmpty;
 
             if (dataGridView1.SelectedRows.Count > 0)
             {

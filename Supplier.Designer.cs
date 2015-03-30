@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtFax = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -69,7 +69,10 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.mtbPhone = new System.Windows.Forms.MaskedTextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +90,7 @@
             this.txtID.Location = new System.Drawing.Point(142, 20);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(183, 20);
+            this.txtID.Size = new System.Drawing.Size(141, 20);
             this.txtID.TabIndex = 1;
             // 
             // label2
@@ -104,14 +107,14 @@
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(142, 46);
             this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(183, 20);
+            this.txtCompanyName.Size = new System.Drawing.Size(141, 20);
             this.txtCompanyName.TabIndex = 1;
             // 
             // txtContactName
             // 
             this.txtContactName.Location = new System.Drawing.Point(142, 72);
             this.txtContactName.Name = "txtContactName";
-            this.txtContactName.Size = new System.Drawing.Size(183, 20);
+            this.txtContactName.Size = new System.Drawing.Size(141, 20);
             this.txtContactName.TabIndex = 1;
             // 
             // label3
@@ -138,7 +141,7 @@
             // 
             this.txtContactTitle.Location = new System.Drawing.Point(142, 98);
             this.txtContactTitle.Name = "txtContactTitle";
-            this.txtContactTitle.Size = new System.Drawing.Size(183, 20);
+            this.txtContactTitle.Size = new System.Drawing.Size(141, 20);
             this.txtContactTitle.TabIndex = 1;
             // 
             // label5
@@ -155,7 +158,7 @@
             // 
             this.txtAddress.Location = new System.Drawing.Point(142, 124);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(183, 20);
+            this.txtAddress.Size = new System.Drawing.Size(141, 20);
             this.txtAddress.TabIndex = 1;
             // 
             // label6
@@ -172,7 +175,7 @@
             // 
             this.txtCity.Location = new System.Drawing.Point(142, 150);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(183, 20);
+            this.txtCity.Size = new System.Drawing.Size(141, 20);
             this.txtCity.TabIndex = 1;
             // 
             // label7
@@ -189,7 +192,7 @@
             // 
             this.txtRegion.Location = new System.Drawing.Point(142, 176);
             this.txtRegion.Name = "txtRegion";
-            this.txtRegion.Size = new System.Drawing.Size(183, 20);
+            this.txtRegion.Size = new System.Drawing.Size(141, 20);
             this.txtRegion.TabIndex = 1;
             // 
             // label8
@@ -206,7 +209,7 @@
             // 
             this.txtPostalCode.Location = new System.Drawing.Point(142, 202);
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(183, 20);
+            this.txtPostalCode.Size = new System.Drawing.Size(141, 20);
             this.txtPostalCode.TabIndex = 1;
             // 
             // label9
@@ -223,7 +226,7 @@
             // 
             this.txtCountry.Location = new System.Drawing.Point(142, 228);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(183, 20);
+            this.txtCountry.Size = new System.Drawing.Size(141, 20);
             this.txtCountry.TabIndex = 1;
             // 
             // label10
@@ -235,13 +238,6 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Phone";
             this.label10.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(142, 254);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(183, 20);
-            this.txtPhone.TabIndex = 1;
             // 
             // label11
             // 
@@ -257,7 +253,7 @@
             // 
             this.txtFax.Location = new System.Drawing.Point(142, 280);
             this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(183, 20);
+            this.txtFax.Size = new System.Drawing.Size(141, 20);
             this.txtFax.TabIndex = 1;
             // 
             // dataGridView1
@@ -276,10 +272,9 @@
             this.clCountry,
             this.clPhone,
             this.clFax});
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(391, 46);
+            this.dataGridView1.Location = new System.Drawing.Point(329, 49);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(347, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(452, 302);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -340,9 +335,9 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(267, 327);
+            this.btnLoad.Location = new System.Drawing.Point(225, 325);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(58, 23);
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -352,7 +347,7 @@
             // 
             this.btnAdd.Location = new System.Drawing.Point(21, 325);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(78, 23);
+            this.btnAdd.Size = new System.Drawing.Size(55, 23);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -360,9 +355,9 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(186, 327);
+            this.btnUpdate.Location = new System.Drawing.Point(158, 325);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(51, 23);
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -375,21 +370,21 @@
             "By ID",
             "By Company Name",
             "By Contact Name"});
-            this.cbSearchOpt.Location = new System.Drawing.Point(560, 10);
+            this.cbSearchOpt.Location = new System.Drawing.Point(498, 15);
             this.cbSearchOpt.Name = "cbSearchOpt";
             this.cbSearchOpt.Size = new System.Drawing.Size(85, 21);
             this.cbSearchOpt.TabIndex = 6;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(391, 11);
+            this.txtSearch.Location = new System.Drawing.Point(329, 16);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(163, 20);
             this.txtSearch.TabIndex = 7;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(662, 8);
+            this.btnSearch.Location = new System.Drawing.Point(600, 14);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(76, 23);
             this.btnSearch.TabIndex = 8;
@@ -399,19 +394,34 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(105, 327);
+            this.btnDelete.Location = new System.Drawing.Point(82, 325);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(56, 23);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // mtbPhone
+            // 
+            this.mtbPhone.Location = new System.Drawing.Point(142, 254);
+            this.mtbPhone.Mask = "(999) 000-0000";
+            this.mtbPhone.Name = "mtbPhone";
+            this.mtbPhone.Size = new System.Drawing.Size(141, 20);
+            this.mtbPhone.TabIndex = 9;
+            this.mtbPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtbPhone_KeyDown);
+            this.mtbPhone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Supplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 376);
+            this.ClientSize = new System.Drawing.Size(793, 376);
+            this.Controls.Add(this.mtbPhone);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.cbSearchOpt);
@@ -421,7 +431,6 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtFax);
-            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPostalCode);
@@ -445,6 +454,7 @@
             this.Name = "Supplier";
             this.Text = "Supplier";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,7 +481,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -493,6 +502,8 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.MaskedTextBox mtbPhone;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

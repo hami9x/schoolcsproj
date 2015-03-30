@@ -103,6 +103,7 @@ namespace ProjectCS
             bool selEmpty = this.dataView.SelectedRows.Count == 0;
             this.btnDelete.Enabled = !selEmpty;
             this.btnUpdate.Enabled = !selEmpty;
+            this.btnAdd.Enabled = selEmpty;
 
             if (!selEmpty)
             {
@@ -133,71 +134,99 @@ namespace ProjectCS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            decimal unitPrice;
-            if (validate(out unitPrice)) {
-                SqlCommand cmd = new SqlCommand("addNewProduct", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@name", this.txName.Text));
-                cmd.Parameters.Add(new SqlParameter("@supplierid", this.cbSupplier.SelectedValue));
-                cmd.Parameters.Add(new SqlParameter("@catid", this.cbCat.SelectedValue));
-                cmd.Parameters.Add(new SqlParameter("@unitprice", unitPrice));
-                cmd.Parameters.Add(new SqlParameter("@discontinued", this.ckDiscontinued.Checked));
-                cmd.ExecuteNonQuery();
+            try
+            {
+                decimal unitPrice;
+                if (validate(out unitPrice))
+                {
+                    SqlCommand cmd = new SqlCommand("addNewProduct", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@name", this.txName.Text));
+                    cmd.Parameters.Add(new SqlParameter("@supplierid", this.cbSupplier.SelectedValue));
+                    cmd.Parameters.Add(new SqlParameter("@catid", this.cbCat.SelectedValue));
+                    cmd.Parameters.Add(new SqlParameter("@unitprice", unitPrice));
+                    cmd.Parameters.Add(new SqlParameter("@discontinued", this.ckDiscontinued.Checked));
+                    cmd.ExecuteNonQuery();
 
-                load();
+                    load();
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            decimal unitPrice;
-            if (validate(out unitPrice))
+            try
             {
-                SqlCommand cmd = new SqlCommand("updateProduct", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@name", this.txName.Text));
-                cmd.Parameters.Add(new SqlParameter("@id", int.Parse(this.lblIdValue.Text)));
-                cmd.Parameters.Add(new SqlParameter("@supplierid", this.cbSupplier.SelectedValue));
-                cmd.Parameters.Add(new SqlParameter("@catid", this.cbCat.SelectedValue));
-                cmd.Parameters.Add(new SqlParameter("@unitprice", unitPrice));
-                cmd.Parameters.Add(new SqlParameter("@discontinued", this.ckDiscontinued.Checked));
-                cmd.ExecuteNonQuery();
+                decimal unitPrice;
+                if (validate(out unitPrice))
+                {
+                    SqlCommand cmd = new SqlCommand("updateProduct", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@name", this.txName.Text));
+                    cmd.Parameters.Add(new SqlParameter("@id", int.Parse(this.lblIdValue.Text)));
+                    cmd.Parameters.Add(new SqlParameter("@supplierid", this.cbSupplier.SelectedValue));
+                    cmd.Parameters.Add(new SqlParameter("@catid", this.cbCat.SelectedValue));
+                    cmd.Parameters.Add(new SqlParameter("@unitprice", unitPrice));
+                    cmd.Parameters.Add(new SqlParameter("@discontinued", this.ckDiscontinued.Checked));
+                    cmd.ExecuteNonQuery();
 
-                load();
+                    load();
+                }
+            } catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to delete?",
-                "Confirm delete", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+            try
             {
-                foreach (DataGridViewRow r in this.dataView.SelectedRows)
+                DialogResult dr = MessageBox.Show("Are you sure to delete?",
+                    "Confirm delete", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    SqlCommand cmd = new SqlCommand("deleteProduct", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@id", r.Cells[0].Value));
-                    cmd.ExecuteNonQuery();
+                    foreach (DataGridViewRow r in this.dataView.SelectedRows)
+                    {
+                        SqlCommand cmd = new SqlCommand("deleteProduct", conn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@id", r.Cells[0].Value));
+                        cmd.ExecuteNonQuery();
 
-                    this.dataView.Rows.RemoveAt(r.Index);
-                    this.dataView.Update();
+                        this.dataView.Rows.RemoveAt(r.Index);
+                        this.dataView.Update();
+                    }
                 }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("searchProduct", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@name", txtSearch.Text));
-            table.Clear();
-            SqlDataReader r = cmd.ExecuteReader();
-            while (r.Read())
+            try
             {
-                table.Rows.Add((int)r[0], r[1].ToString(), r[2].ToString(), r[3].ToString(), (decimal)r[4], (bool)r[5], (int)r[6], (int)r[7]);
+                SqlCommand cmd = new SqlCommand("searchProduct", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@name", txtSearch.Text));
+                table.Clear();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    table.Rows.Add((int)r[0], r[1].ToString(), r[2].ToString(), r[3].ToString(), (decimal)r[4], (bool)r[5], (int)r[6], (int)r[7]);
+                }
+                r.Close();
             }
-            r.Close();
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }

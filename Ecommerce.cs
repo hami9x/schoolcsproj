@@ -11,6 +11,7 @@ using System.Configuration;
 using Project1;
 using Project;
 using GroupProject_Employees;
+using WindowsFormsApplication7;
 
 namespace ProjectCS
 {
@@ -22,6 +23,7 @@ namespace ProjectCS
         private Categories catWindow;
         private Supplier suppliersWindow;
         private Employees empWindow;
+        private Orders ordersWindow;
         private SqlConnection conn;
 
         public Ecommerce()
@@ -43,6 +45,8 @@ namespace ProjectCS
             suppliersWindow.MdiParent = this;
             empWindow = new Employees(conn, wdEmployees);
             empWindow.MdiParent = this;
+            ordersWindow = new Orders(conn, wdOrders);
+            ordersWindow.MdiParent = this;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)

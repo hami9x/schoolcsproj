@@ -25,9 +25,19 @@ namespace Project
         public Supplier(SqlConnection sql, ToolStripMenuItem menu)
             : base(sql, menu)
         {
-            con = conn;
-            InitializeComponent();
-            initialADOObject();
+            try
+            {
+                con = conn;
+                InitializeComponent();
+                initialADOObject();
+                this.cbSearchOpt.SelectedIndex = 0;
+                this.cbSearchOpt.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         protected override void load()
@@ -98,7 +108,7 @@ namespace Project
             c.Parameters.Add(param);
 
             param = new SqlParameter("@phone", SqlDbType.NVarChar, 24);
-            param.Value = txtPhone.Text;
+            param.Value = mtbPhone.Text;
             c.Parameters.Add(param);
 
             param = new SqlParameter("@fax", SqlDbType.NVarChar, 24);
@@ -112,7 +122,12 @@ namespace Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            addSupplier();
+            //MessageBox.Show(validateInput().ToString());
+            if (validateInput() == false) return;
+            else
+                addSupplier();
+
+
 
            
         }
@@ -163,7 +178,7 @@ namespace Project
             c.Parameters.Add(param);
 
             param = new SqlParameter("@phone", SqlDbType.NVarChar, 24);
-            param.Value = txtPhone.Text;
+            param.Value = mtbPhone.Text;
             c.Parameters.Add(param);
 
             param = new SqlParameter("@fax", SqlDbType.NVarChar, 24);
@@ -178,6 +193,8 @@ namespace Project
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (validateInput() == false) return;
+            else
             updateSupplier();
         }
 
@@ -185,6 +202,9 @@ namespace Project
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
                 DataGridViewRow r = dataGridView1.SelectedRows[0];
                 txtID.Text = r.Cells[0].Value.ToString();
                 txtCompanyName.Text = r.Cells[1].Value.ToString() ;
@@ -195,10 +215,16 @@ namespace Project
                 txtRegion.Text = r.Cells[6].Value.ToString();
                 txtPostalCode.Text = r.Cells[7].Value.ToString();
                 txtCountry.Text = r.Cells[8].Value.ToString();
-                txtPhone.Text = r.Cells[9].Value.ToString();
+                mtbPhone.Text = r.Cells[9].Value.ToString();
                 txtFax.Text = r.Cells[10].Value.ToString();
 
-             }   
+             }
+            else
+            {
+                btnAdd.Enabled = true;
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
         }
 
         void searchByID() {
@@ -279,11 +305,130 @@ namespace Project
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {
-            deleteSupplier();
+        {   
+                        DialogResult dr = MessageBox.Show("Are you sure???", "Confirm", MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+                        if (dr == DialogResult.Yes)
+                        {
+                            deleteSupplier();
+                            
+                        }
         }
-        
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        bool validateInput()
+        {
+            bool error = false;
+
+            if (txtCompanyName.Text.Length > 40)
+            {
+                errorProvider1.SetError(txtCompanyName, "Input out of range!");
+                error = true;
+            }
+
+            if (txtCompanyName.Text.Length <= 0)
+            {
+                errorProvider1.SetError(txtCompanyName, "Please input!");
+                error = true;
+            }
+
+
+            if (txtContactName.Text.Length > 30)
+            {
+                errorProvider1.SetError(txtContactName, "Input out of range!");
+                error = true;
+            }
+
+            if (txtContactName.Text.Length <= 0)
+            {
+                errorProvider1.SetError(txtContactName, "Please input!");
+                error = true;
+            }
+
+            if (txtContactTitle.Text.Length > 30)
+            {
+                errorProvider1.SetError(txtContactTitle, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtAddress.Text.Length > 60)
+            {
+                errorProvider1.SetError(txtAddress, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtCity.Text.Length > 15)
+            {
+                errorProvider1.SetError(txtCity, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtRegion.Text.Length > 15)
+            {
+                errorProvider1.SetError(txtRegion, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtPostalCode.Text.Length > 10)
+            {
+                errorProvider1.SetError(txtPostalCode, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtCountry.Text.Length > 15)
+            {
+                errorProvider1.SetError(txtCountry, "Input out of range!");
+                error = true;
+            }
+
+
+            if (mtbPhone.Text.Length > 24)
+            {
+                errorProvider1.SetError(mtbPhone, "Input out of range!");
+                error = true;
+            }
+
+
+            if (txtFax.Text.Length > 24)
+            {
+                errorProvider1.SetError(txtFax, "Input out of range!");
+                error = true;
+            }
+            if (mtbPhone.MaskCompleted == false)
+            {
+                error = true;
+                errorProvider1.SetError(mtbPhone, "This is not a phone number!");
+
+            }
+
+
+            if (error == true)
+                return false;
+            else
+            {
+                errorProvider1.Clear();
+                return true;
+            }
             
+
+
+
+
+        }
+
+        private void mtbPhone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue < 48 || e.KeyValue > 57) return;
+        }   
        
 
 
